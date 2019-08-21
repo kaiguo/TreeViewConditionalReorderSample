@@ -19,6 +19,9 @@
                 </DataTemplate>
             </winui:TreeView.ItemTemplate>
         </winui:TreeView>
+
+        <Button Content="DumpTreeViewData" Click="Button_Click"/>
+        <TextBlock x:Name="TestTextBlock" />
     </StackPanel>
     
 </Page>
