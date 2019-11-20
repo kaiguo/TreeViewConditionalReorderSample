@@ -8,18 +8,25 @@ namespace TreeViewConditionalReorderSample
     {
         protected override void OnDragOver(DragEventArgs e)
         {
+            var draggedItem = MainPage.DraggedItems[0];
+            var draggedOverItem = DataContext as TreeViewData;
+            if (draggedItem.IsGroup && (draggedOverItem.IsGroup || draggedOverItem.HasParent))
+            {
+                e.Handled = true;
+            }
             base.OnDragOver(e);
-
-            var data = DataContext as TreeViewData;
-            e.AcceptedOperation = data.IsGroup ? DataPackageOperation.Move : DataPackageOperation.None;
+            e.AcceptedOperation = draggedOverItem.IsGroup && !draggedItem.IsGroup ? DataPackageOperation.Move : DataPackageOperation.None;
         }
-
         protected override void OnDrop(DragEventArgs e)
         {
             var data = DataContext as TreeViewData;
-            e.AcceptedOperation = data.IsGroup ? DataPackageOperation.Move : DataPackageOperation.None;
+            if(!data.IsGroup)
+            {
+                e.Handled = true;
+            }
 
             base.OnDrop(e);
         }
+
     }
 }

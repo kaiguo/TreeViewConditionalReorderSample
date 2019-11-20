@@ -10,7 +10,10 @@
     xmlns:winui="using:Microsoft.UI.Xaml.Controls">
 
     <StackPanel>
-        <winui:TreeView ItemsSource="{x:Bind DataSource}">
+        <winui:TreeView
+            ItemsSource="{x:Bind DataSource}"
+            DragItemsStarting="TreeView_DragItemsStarting"
+            DragItemsCompleted="TreeView_DragItemsCompleted">
             <winui:TreeView.ItemTemplate>
                 <DataTemplate x:DataType="local:TreeViewData">
                     <local:MyTreeViewItem 
@@ -19,9 +22,6 @@
                 </DataTemplate>
             </winui:TreeView.ItemTemplate>
         </winui:TreeView>
-
-        <Button Content="DumpTreeViewData" Click="Button_Click"/>
-        <TextBlock x:Name="TestTextBlock" />
     </StackPanel>
     
 </Page>

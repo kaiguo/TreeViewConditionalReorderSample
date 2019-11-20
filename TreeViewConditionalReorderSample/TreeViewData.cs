@@ -7,6 +7,7 @@ namespace TreeViewConditionalReorderSample
         public string Content { get; set; }
         public ObservableCollection<TreeViewData> Children { get; set; }
         public bool IsGroup { get; set; }
+        public bool HasParent { get; set; }
 
         public TreeViewData()
         {
