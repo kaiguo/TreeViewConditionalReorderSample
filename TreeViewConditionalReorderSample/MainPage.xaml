@@ -7,21 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:winui="using:Microsoft.UI.Xaml.Controls">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <StackPanel>
-        <winui:TreeView
+        <muxc:TreeView
             ItemsSource="{x:Bind DataSource}"
             DragItemsStarting="TreeView_DragItemsStarting"
             DragItemsCompleted="TreeView_DragItemsCompleted">
-            <winui:TreeView.ItemTemplate>
+            <muxc:TreeView.ItemTemplate>
                 <DataTemplate x:DataType="local:TreeViewData">
                     <local:MyTreeViewItem 
                         ItemsSource="{x:Bind Children}"
                         Content="{x:Bind Content}" />
                 </DataTemplate>
-            </winui:TreeView.ItemTemplate>
-        </winui:TreeView>
+            </muxc:TreeView.ItemTemplate>
+        </muxc:TreeView>
     </StackPanel>
     
 </Page>
